@@ -7,10 +7,30 @@
 <body>
 <?php if ($_GET['name'] == NULL): ?>
 <form>
-	<label for="name">Name</label>l
+	<label for="name">Name</label>
 	<input type="text" name="name" id="name">
 	<input type="submit" value="Send!">
 </form>
+
+<?php 
+
+else:
+
+$name = $_GET['name'];
+$half_name_length = (int) (mb_strlen($name) / 2);
+$remaining_chars = mb_strlen($nytt_namn) - $half_name_length;
+$name_end = mb_substr($name, $half_name_length, $remaining_chars);
+$name_beginning = mb_substr($name, 0, $half_name_length);
+$botname = $name_end . $name_beginning;
+?>
+
+<p><stong><?= $botname ?>:</stong> Hej <?= $name ?></p>
+<form>
+	<label for="name">Reply</label>
+	<input type="hiddeb" name="name" value="<?= $name ?>">
+	<input type="submit" value="Reply">
+</form>
+
 <?php endif ?>
 
 </body>
