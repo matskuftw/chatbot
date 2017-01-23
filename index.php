@@ -14,7 +14,7 @@
 
 <?php 
 
-else:
+elseif ($_GET['reply'] == NULL):
 
 $name = $_GET['name'];
 $half_name_length = (int) (mb_strlen($name) / 2);
@@ -26,10 +26,32 @@ $botname = $name_end . $name_beginning;
 
 <p><stong><?= $botname ?>:</stong> Hej <?= $name ?></p>
 <form>
-	<label for="name">Reply</label>
-	<input type="hiddeb" name="name" value="<?= $name ?>">
+	<input type="text" name="reply">
+	<input type="hidden" name="name" value="<?= $name ?>">
+	<input type="hidden" name="botname" value="<?= $botname ?>">
 	<input type="submit" value="Reply">
 </form>
+<?php
+else:
+	$name = $_GET['name'];
+$botname = $_GET['name'];
+$reply = $_GET['reply'];
+?>
+
+
+<p><stong><?= $botname ?>:</stong> Hej <?= $name ?></p>
+
+<p><stong><?= $name ?>:</stong><?= $reply ?></p>
+
+
+<?php
+
+$array = ["Fint väder?", "hej", "schysst meme", "dank", "kapitalismen kommer segra"];
+$botreply = $array[random_int(0, count($array) -1)];
+
+?>
+
+p><stong><?= $botname ?>:</stong> <?= $botreply ?></p>
 
 <?php endif ?>
 
